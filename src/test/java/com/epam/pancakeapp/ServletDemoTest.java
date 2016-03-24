@@ -17,17 +17,17 @@ import org.testng.annotations.Test;
  *
  */
 public class ServletDemoTest extends Mockito {
-	private ServletDemo underTest;
+    private ServletDemo underTest;
 
-	@BeforeMethod
+    @BeforeMethod
     public void setUp() {
         underTest = new ServletDemo();
     }
 
-	@Test
-	public void testServlet() throws Exception {
-		// GIVEN
-		HttpServletRequest request = mock(HttpServletRequest.class);
+    @Test
+    public void testServlet() throws Exception {
+        // GIVEN
+        HttpServletRequest request = mock(HttpServletRequest.class);
         HttpServletResponse response = mock(HttpServletResponse.class);
         StringWriter stringWriter = new StringWriter();
         PrintWriter printWriter = new PrintWriter(stringWriter);
@@ -38,5 +38,5 @@ public class ServletDemoTest extends Mockito {
 
         // THEN
         Assert.assertEquals(stringWriter.toString(), "<html>\r\n<body>\r\n<h1>Pancake</h1>\r\n</body>\r\n</html>\r\n");
-	}
+    }
 }
