@@ -32,7 +32,7 @@ public class ServletDemoTest {
     }
 
     @Test
-    public void testShouldWhen() throws Exception {
+    public void testDoGetShouldPrintStaticContentWhenInvoked() throws Exception {
         // GIVEN
         Mockito.when(mockResponse.getWriter()).thenReturn(mockPrintWriter);
 
