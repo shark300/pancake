@@ -1,4 +1,4 @@
-package com.epam.pancakeapp;
+package io.github.pancake;
 
 import java.io.IOException;
 import java.io.PrintWriter;

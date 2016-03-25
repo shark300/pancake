@@ -2,13 +2,14 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.epam</groupId>
+	<groupId>io.github.pancake</groupId>
 	<artifactId>pancake-app</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 
 	<properties>
 		<java.version>1.8</java.version>
+		<maven.compiler.version>3.5.1</maven.compiler.version>
 		<jcl.slf4j.version>1.7.19</jcl.slf4j.version>
 		<logback.version>1.1.6</logback.version>
 		<servlet.version>3.1.0</servlet.version>
@@ -55,7 +56,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.5.1</version>
+				<version>${maven.compiler.version}</version>
 				<configuration>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
