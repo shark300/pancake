@@ -1,6 +1,10 @@
+bin/
 target/
 .idea/
 .eclipse/
+.settings/
+.classpath
+.project
 *.iml
 *.class
 
