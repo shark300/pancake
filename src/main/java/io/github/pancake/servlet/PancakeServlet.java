@@ -8,15 +8,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * Demo servlet serving static content
+ * 
  * @author Adorjan Nagy
- *
  */
 public class PancakeServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    /*
-     * Always provide the same HTML content in response
-     */
     @Override
     public void doGet(final HttpServletRequest request, final HttpServletResponse response) throws IOException {
         response.setContentType("text/html; charset=utf-8");

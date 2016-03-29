@@ -1,11 +1,12 @@
 package io.github.pancake.servlet;
 
-import static org.junit.Assert.assertEquals;
+import static org.mockito.Matchers.anyString;
+import static org.mockito.Mockito.atLeastOnce;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.StringWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,44 +17,34 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 /**
+ * Unit test of {@link PancakeServlet}
+ * 
  * @author Adorjan Nagy
- *
  */
 public class PancakeServletTest {
 
     @Mock
-    private HttpServletRequest request;
+    private HttpServletRequest mockRequest;
     @Mock
-    private HttpServletResponse response;
+    private HttpServletResponse mockResponse;
+    @Mock
+    private PrintWriter mockPrintWriter;
 
     private PancakeServlet underTest;
-    private String PancakeServletResponseHtml;
 
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
         underTest = new PancakeServlet();
-        StringBuilder sb = new StringBuilder(8);
-        sb.append("<html>");
-        sb.append("<head>");
-        sb.append("  <meta charset='UTF-8'>");
-        sb.append("</head>");
-        sb.append("<body>");
-        sb.append("  Stop, Pancake time!");
-        sb.append("</body>");
-        sb.append("</html>");
-        PancakeServletResponseHtml = sb.toString();
     }
 
     @Test
     public void testDoGetShouldAlwaysSendTheSameHTML() throws IOException {
         // GIVEN
-        StringWriter stringWriter = new StringWriter();
-        PrintWriter printWriter = new PrintWriter(stringWriter);
-        when(response.getWriter()).thenReturn(printWriter);
+        when(mockResponse.getWriter()).thenReturn(mockPrintWriter);
         // WHEN
-        underTest.doGet(request, response);
+        underTest.doGet(mockRequest, mockResponse);
         // THEN
-        assertEquals("requested resource", stringWriter.toString(), PancakeServletResponseHtml);
+        verify(mockPrintWriter, atLeastOnce()).print(anyString());
     }
 }
