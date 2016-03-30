@@ -1,13 +1,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.github.pancake</groupId>
-	<artifactId>pancake-app</artifactId>
+	<artifactId>pancake-webapp</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 
 	<properties>
+		<!-- Dependency and plugin versions -->
 		<java.version>1.8</java.version>
 		<maven.compiler.version>3.5.1</maven.compiler.version>
 		<jcl.slf4j.version>1.7.19</jcl.slf4j.version>
@@ -15,6 +16,9 @@
 		<servlet.version>3.1.0</servlet.version>
 		<mockito.version>1.10.19</mockito.version>
 		<testng.version>6.9.10</testng.version>
+		<plugin.maven.surefire.version>2.19.1</plugin.maven.surefire.version>
+		<!-- Parameter values -->
+		<skip.unit.tests>false</skip.unit.tests>
 	</properties>
 
 	<dependencies>
@@ -60,6 +64,14 @@
 				<configuration>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${plugin.maven.surefire.version}</version>
+				<configuration>
+					<skip>${skip.unit.tests}</skip>
 				</configuration>
 			</plugin>
 		</plugins>
