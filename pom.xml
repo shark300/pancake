@@ -14,12 +14,15 @@
 		<jcl.slf4j.version>1.7.19</jcl.slf4j.version>
 		<logback.version>1.1.6</logback.version>
 		<servlet.version>3.1.0</servlet.version>
+		<springframework.version>4.2.5.RELEASE</springframework.version>
+		<io.github.pancake.version>1.0-SNAPSHOT</io.github.pancake.version>
 		<mockito.version>1.10.19</mockito.version>
 		<testng.version>6.9.10</testng.version>
 	</properties>
 
 	<dependencyManagement>
 		<dependencies>
+			<!-- Logging -->
 			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>jcl-over-slf4j</artifactId>
@@ -30,12 +33,40 @@
 				<artifactId>logback-classic</artifactId>
 				<version>${logback.version}</version>
 			</dependency>
+			<!-- Servlet API -->
 			<dependency>
 				<groupId>javax.servlet</groupId>
 				<artifactId>javax.servlet-api</artifactId>
 				<version>${servlet.version}</version>
 				<scope>provided</scope>
 			</dependency>
+			<!-- Spring -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aop</artifactId>
+				<version>${springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-beans</artifactId>
+				<version>${springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>${springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-expression</artifactId>
+				<version>${springframework.version}</version>
+			</dependency>
+			<!-- Testing -->
 			<dependency>
 				<groupId>org.testng</groupId>
 				<artifactId>testng</artifactId>
@@ -48,11 +79,18 @@
 				<version>${mockito.version}</version>
 				<scope>test</scope>
 			</dependency>
+			<!-- Modules -->
+			<dependency>
+				<groupId>io.github.pancake</groupId>
+				<artifactId>pancake-service</artifactId>
+				<version>${io.github.pancake.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
 	<modules>
 		<module>pancake-webapp</module>
+		<module>pancake-service</module>
 	</modules>
 
 	<build>
