@@ -40,12 +40,12 @@
 		<dependency>
 			<groupId>com.github.gergelyrozsonits.iogithubpancakepersistence</groupId>
 			<artifactId>io-github-pancake-persistence-api</artifactId>
-			<version>-SNAPSHOT</version>
+			<version>1.0</version>
 		</dependency>
 		<dependency>
 			<groupId>com.github.gergelyrozsonits.iogithubpancakepersistence</groupId>
 			<artifactId>io-github-pancake-persistence-impl</artifactId>
-			<version>-SNAPSHOT</version>
+			<version>1.0</version>
 		</dependency>
 		<!-- Testing -->
 		<dependency>
