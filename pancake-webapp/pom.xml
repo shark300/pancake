@@ -29,10 +29,6 @@
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-aop</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
 			<artifactId>spring-beans</artifactId>
 		</dependency>
 		<dependency>
@@ -62,6 +58,11 @@
 		<dependency>
 			<groupId>io.github.pancake</groupId>
 			<artifactId>pancake-service</artifactId>
+		</dependency>
+		<!-- Modules -->
+		<dependency>
+			<groupId>io.github.pancake.persistence</groupId>
+			<artifactId>io-github-pancake-persistence-api</artifactId>
 		</dependency>
 	</dependencies>
 

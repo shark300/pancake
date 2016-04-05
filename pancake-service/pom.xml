@@ -32,6 +32,11 @@
 			<artifactId>mockito-all</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- Modules -->
+		<dependency>
+			<groupId>io.github.pancake.persistence</groupId>
+			<artifactId>io-github-pancake-persistence-api</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>

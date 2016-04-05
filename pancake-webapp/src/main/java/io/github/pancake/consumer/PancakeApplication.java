@@ -1,23 +1,24 @@
-package io.github.di.consumer;
+package io.github.pancake.consumer;
 
-import java.util.Set;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
+import io.github.pancake.persistence.base.Pancake;
 import io.github.pancake.service.PancakeService;
 
 /**
+ * PancakeService consumer class.
+ * 
  * @author Adorjan Nagy
- *
  */
 @Component
-public class MyApplication {
+public class PancakeApplication {
     private PancakeService service;
 
-    public Set<String> retrievePancakes() {
-        return this.service.retrievePancakes();
+    public List<Pancake> getOrderablePancakes() {
+        return service.getOrderablePancakes();
     }
 
     @Autowired

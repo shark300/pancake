@@ -15,9 +15,10 @@
 		<logback.version>1.1.6</logback.version>
 		<servlet.version>3.1.0</servlet.version>
 		<springframework.version>4.2.5.RELEASE</springframework.version>
-		<io.github.pancake.version>1.0-SNAPSHOT</io.github.pancake.version>
 		<mockito.version>1.10.19</mockito.version>
 		<testng.version>6.9.10</testng.version>
+		<io.github.pancake.version>1.0-SNAPSHOT</io.github.pancake.version>
+		<io.github.pancake.persistence.version>1.0</io.github.pancake.persistence.version>
 	</properties>
 
 	<dependencyManagement>
@@ -41,11 +42,6 @@
 				<scope>provided</scope>
 			</dependency>
 			<!-- Spring -->
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-aop</artifactId>
-				<version>${springframework.version}</version>
-			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-beans</artifactId>
@@ -84,6 +80,16 @@
 				<groupId>io.github.pancake</groupId>
 				<artifactId>pancake-service</artifactId>
 				<version>${io.github.pancake.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.github.pancake.persistence</groupId>
+				<artifactId>io-github-pancake-persistence-api</artifactId>
+				<version>${io.github.pancake.persistence.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.github.pancake.persistence</groupId>
+				<artifactId>io-github-pancake-persistence-impl</artifactId>
+				<version>${io.github.pancake.persistence.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
