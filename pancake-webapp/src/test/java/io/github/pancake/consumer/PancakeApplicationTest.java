@@ -1,7 +1,9 @@
 package io.github.pancake.consumer;
 
+import static org.mockito.Mockito.only;
+import static org.mockito.Mockito.verify;
+
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -33,6 +35,6 @@ public class PancakeApplicationTest {
         underTest.getOrderablePancakes();
 
         // THEN
-        Mockito.verify(mockPancakeService, Mockito.only()).getOrderablePancakes();
+        verify(mockPancakeService, only()).getOrderablePancakes();
     }
 }

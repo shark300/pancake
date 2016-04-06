@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.github.pancake</groupId>
 	<artifactId>multi-pancake-app</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.0</version>
 	<packaging>pom</packaging>
 	<name>Pancake App</name>
 
@@ -17,7 +17,7 @@
 		<springframework.version>4.2.5.RELEASE</springframework.version>
 		<mockito.version>1.10.19</mockito.version>
 		<testng.version>6.9.10</testng.version>
-		<io.github.pancake.version>1.0-SNAPSHOT</io.github.pancake.version>
+		<io.github.pancake.version>1.0</io.github.pancake.version>
 		<io.github.pancake.persistence.version>1.0</io.github.pancake.persistence.version>
 	</properties>
 
@@ -62,19 +62,6 @@
 				<artifactId>spring-expression</artifactId>
 				<version>${springframework.version}</version>
 			</dependency>
-			<!-- Testing -->
-			<dependency>
-				<groupId>org.testng</groupId>
-				<artifactId>testng</artifactId>
-				<version>${testng.version}</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.mockito</groupId>
-				<artifactId>mockito-all</artifactId>
-				<version>${mockito.version}</version>
-				<scope>test</scope>
-			</dependency>
 			<!-- Modules -->
 			<dependency>
 				<groupId>io.github.pancake</groupId>
@@ -90,6 +77,19 @@
 				<groupId>io.github.pancake.persistence</groupId>
 				<artifactId>io-github-pancake-persistence-impl</artifactId>
 				<version>${io.github.pancake.persistence.version}</version>
+			</dependency>
+			<!-- Testing -->
+			<dependency>
+				<groupId>org.testng</groupId>
+				<artifactId>testng</artifactId>
+				<version>${testng.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-all</artifactId>
+				<version>${mockito.version}</version>
+				<scope>test</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

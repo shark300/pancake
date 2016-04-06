@@ -30,8 +30,9 @@ public class ServletDemo extends HttpServlet {
         out.println("<html>");
         out.println("<body>");
         out.println("<h1>Pancake</h1>");
-        for (Pancake pancake : pancakes)
+        for (Pancake pancake : pancakes) {
             out.println("<p>" + pancake + "</p>");
+        }
         out.println("</body>");
         out.println("</html>");
     }
