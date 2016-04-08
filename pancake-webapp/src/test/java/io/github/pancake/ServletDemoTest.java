@@ -1,5 +1,9 @@
 package io.github.pancake;
 
+import static org.mockito.Mockito.atLeastOnce;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +15,8 @@ import org.mockito.MockitoAnnotations;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import io.github.pancake.facade.PancakeFacade;
+
 /**
  * Test class for {@link ServletDemo}.
  * @author Bence Kornis
@@ -18,6 +24,8 @@ import org.testng.annotations.Test;
  */
 public class ServletDemoTest {
     private ServletDemo underTest;
+    @Mock
+    private PancakeFacade mockPancakeFacade;
     @Mock
     private HttpServletRequest mockRequest;
     @Mock
@@ -27,19 +35,20 @@ public class ServletDemoTest {
 
     @BeforeMethod
     public void setUp() {
-        underTest = new ServletDemo();
         MockitoAnnotations.initMocks(this);
+        underTest = new ServletDemo();
+        underTest.setPancakeFacade(mockPancakeFacade);
     }
 
     @Test
     public void testDoGetShouldPrintStaticContentWhenInvoked() throws Exception {
         // GIVEN
-        Mockito.when(mockResponse.getWriter()).thenReturn(mockPrintWriter);
+        when(mockResponse.getWriter()).thenReturn(mockPrintWriter);
 
         // WHEN
         underTest.doGet(mockRequest, mockResponse);
 
         // THEN
-        Mockito.verify(mockPrintWriter, Mockito.atLeastOnce()).println(Mockito.anyString());
+        verify(mockPrintWriter, atLeastOnce()).println(Mockito.anyString());
     }
 }

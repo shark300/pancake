@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import io.github.pancake.configuration.PancakeConfiguration;
-import io.github.pancake.consumer.PancakeApplication;
+import io.github.pancake.facade.PancakeFacade;
 import io.github.pancake.persistence.base.Pancake;
+import io.github.pancake.service.configuration.PancakeServiceConfiguration;
 
 /**
  * Demo servlet serving static content.
@@ -22,6 +22,14 @@ import io.github.pancake.persistence.base.Pancake;
  */
 public class ServletDemo extends HttpServlet {
     private static final long serialVersionUID = 1L;
+    private AnnotationConfigApplicationContext context;
+    private PancakeFacade pancakeFacade;
+
+    @Override
+    public void init() {
+        context = new AnnotationConfigApplicationContext(PancakeServiceConfiguration.class);
+        setPancakeFacade(context.getBean(PancakeFacade.class));
+    }
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -37,10 +45,11 @@ public class ServletDemo extends HttpServlet {
         out.println("</html>");
     }
 
-    @SuppressWarnings("resource")
+    void setPancakeFacade(PancakeFacade pancakeFacade) {
+        this.pancakeFacade = pancakeFacade;
+    }
+
     private List<Pancake> getOrderablePancakes() {
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(PancakeConfiguration.class);
-        PancakeApplication application = context.getBean(PancakeApplication.class);
-        return application.getOrderablePancakes();
+        return pancakeFacade.getOrderablePancakes();
     }
 }
