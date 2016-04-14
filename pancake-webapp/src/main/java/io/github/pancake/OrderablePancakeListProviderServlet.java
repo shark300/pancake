@@ -1,9 +1,10 @@
 package io.github.pancake;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,12 +16,10 @@ import io.github.pancake.persistence.base.Pancake;
 import io.github.pancake.service.configuration.PancakeServiceConfiguration;
 
 /**
- * Demo servlet serving static content.
- *
- * @author Bence Kornis
- * @author Adorjan Nagy
+ * Servlet implementation class OrderablePancakeListProviderServlet
  */
-public class ServletDemo extends HttpServlet {
+@WebServlet("/OrderablePancakeListProviderServlet")
+public class OrderablePancakeListProviderServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private AnnotationConfigApplicationContext context;
     private PancakeFacade pancakeFacade;
@@ -31,22 +30,23 @@ public class ServletDemo extends HttpServlet {
         setPancakeFacade(context.getBean(PancakeFacade.class));
     }
 
-    @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        List<Pancake> pancakes = getOrderablePancakes();
-        PrintWriter out = response.getWriter();
-        out.println("<html>");
-        out.println("<body>");
-        out.println("<h1>Pancake</h1>");
-        for (Pancake pancake : pancakes) {
-            out.println("<p>" + pancake + "</p>");
-        }
-        out.println("</body>");
-        out.println("</html>");
+    /**
+     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        setOrderablePancakeListIntoRequest(request);
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        setOrderablePancakeListIntoRequest(request);
     }
 
     void setPancakeFacade(PancakeFacade pancakeFacade) {
         this.pancakeFacade = pancakeFacade;
+    }
+
+    private void setOrderablePancakeListIntoRequest(HttpServletRequest request) {
+        request.setAttribute("orderablePancakeList", getOrderablePancakes());
     }
 
     private List<Pancake> getOrderablePancakes() {

@@ -23,9 +23,10 @@ public class PancakeFactory implements FactoryBean<List<Pancake>> {
         return pancakes;
     }
 
+    @SuppressWarnings("rawtypes")
     @Override
-    public Class<Pancake[]> getObjectType() {
-        return Pancake[].class;
+    public Class<List> getObjectType() {
+        return List.class;
     }
 
     @Override
@@ -34,6 +35,10 @@ public class PancakeFactory implements FactoryBean<List<Pancake>> {
     }
 
     private void initPancakes() {
-        pancakes = Arrays.asList(Pancake.values());
+        setPancakes(Arrays.asList(Pancake.values()));
+    }
+
+    void setPancakes(List<Pancake> pancakes) {
+        this.pancakes = pancakes;
     }
 }
