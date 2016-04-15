@@ -10,33 +10,53 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import io.github.pancake.facade.PancakeFacade;
 import io.github.pancake.persistence.base.Pancake;
+import io.github.pancake.service.configuration.PancakeServiceConfiguration;
 
 /**
- * Servlet implementation class OrderFormServlet
+ * Pancake order form HTML provider servlet.
+ * 
  * @author Adorjan Nagy
  */
 @WebServlet("/OrderFormServlet")
 public class OrderFormServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
+    private AnnotationConfigApplicationContext context;
+    private PancakeFacade pancakeFacade;
+
+    @Override
+    public void init() {
+        context = new AnnotationConfigApplicationContext(PancakeServiceConfiguration.class);
+        setPancakeFacade(context.getBean(PancakeFacade.class));
+    }
 
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         PrintWriter out = response.getWriter();
-        request.getRequestDispatcher("OrderablePancakeListProviderServlet").include(request, response);
         out.println("<html>");
         out.println("<body>");
         out.println("<h1>Pancake Order Form</h1>");
         out.println("<form action='" + request.getRequestURI() + "' method='POST'>");
         out.println("Your e-mail address: <input type='text' name='eMailAddress'><br />");
-        for (Pancake pancake : (List<Pancake>)request.getAttribute("orderablePancakeList")) {
+        for (Pancake pancake : getOrderablePancakes()) {
             out.println(String.format("%s: <input type='text' name='%s'> pieces<br />", pancake, pancake));
         }
         out.println("<input type='submit' value='Submit' />");
         out.println("</form>");
         out.println("</body>");
         out.println("</html>");
+    }
+
+    void setPancakeFacade(PancakeFacade pancakeFacade) {
+        this.pancakeFacade = pancakeFacade;
+    }
+
+    private List<Pancake> getOrderablePancakes() {
+        return pancakeFacade.getOrderablePancakes();
     }
 }

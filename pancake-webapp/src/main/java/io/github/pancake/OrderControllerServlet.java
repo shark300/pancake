@@ -22,7 +22,7 @@ public class OrderControllerServlet extends HttpServlet {
     private Logger logger = LoggerFactory.getLogger(OrderControllerServlet.class);
 
     @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         HttpSession session = getSession(request);
         if (session.getAttribute("eMailAddress") != null) {
             request.getRequestDispatcher("OrderConfirmationServlet").include(request, response);
@@ -32,9 +32,9 @@ public class OrderControllerServlet extends HttpServlet {
     }
 
     @Override
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.getRequestDispatcher("OrderConfirmationServlet").include(request, response);
-        final HttpSession session = request.getSession();
+        HttpSession session = request.getSession();
         session.setAttribute("eMailAddress", request.getParameter("eMailAddress"));
         session.setAttribute("pancakesWithAmounts", request.getAttribute("pancakesWithAmounts"));
         logger.info(request.getParameter("eMailAddress") + " ordered " + request.getAttribute("pancakesWithAmounts"));
@@ -48,7 +48,7 @@ public class OrderControllerServlet extends HttpServlet {
         }
         return session;
     }
-    
+
     void setLogger(Logger logger) {
         this.logger = logger;
     }
