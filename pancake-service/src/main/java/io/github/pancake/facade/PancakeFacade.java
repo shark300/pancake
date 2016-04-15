@@ -10,7 +10,7 @@ import io.github.pancake.persistence.base.Pancake;
 import io.github.pancake.service.PancakeService;
 
 /**
- * PancakeService consumer class.
+ * PancakeFactory bean provider class.
  * 
  * @author Adorjan Nagy
  */

@@ -9,6 +9,8 @@ import org.springframework.stereotype.Component;
 import io.github.pancake.persistence.base.Pancake;
 
 /**
+ * A list of pancakes provider Pancake factory bean class.
+ * 
  * @author Adorjan Nagy
  */
 @Component
