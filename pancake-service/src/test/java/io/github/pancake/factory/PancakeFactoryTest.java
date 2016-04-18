@@ -1,10 +1,5 @@
 package io.github.pancake.factory;
 
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.verify;
-import static org.springframework.util.Assert.notNull;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,11 +10,16 @@ import org.testng.annotations.Test;
 
 import io.github.pancake.persistence.base.Pancake;
 
+/**
+ * Test class for {@link PancakeFactory}.
+ *
+ * @author Adorjan Nagy
+ */
 public class PancakeFactoryTest {
     private PancakeFactory underTest;
     private List<Pancake> pancakes;
     private List<Pancake> testPancakes;
-    
+
     @BeforeMethod
     public void setUp() {
         MockitoAnnotations.initMocks(this);
@@ -28,18 +28,8 @@ public class PancakeFactoryTest {
     }
 
     @Test
-    public void testGetObjectShouldInitThePancakeListWhenFirstInvoked() {
-        // GIVEN in setUp
-        // WHEN
-        pancakes = underTest.getObject();
-        // THEN
-        notNull(pancakes);
-    }
-    
-    @Test
     public void testGetObjectShouldReturnTheListOfPancakesWhenPancakesAreSet() {
-        // GIVEN
-        underTest.setPancakes(testPancakes);
+        // GIVEN in setUp
         // WHEN
         pancakes = underTest.getObject();
         // THEN

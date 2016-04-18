@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 
 import io.github.pancake.factory.PancakeFactory;
 import io.github.pancake.persistence.base.Pancake;
-import io.github.pancake.service.PancakeService;
 
 /**
  * PancakeFactory bean provider class.
@@ -16,16 +15,13 @@ import io.github.pancake.service.PancakeService;
  */
 @Component
 public class PancakeFacade {
-    private PancakeService pancakeService;
-    private PancakeFactory pancakeFactory;
+    private final PancakeFactory pancakeFactory;
 
     /**
-     * @param pancakeService
      * @param pancakeFactory
      */
     @Autowired
-    public PancakeFacade(PancakeService pancakeService, PancakeFactory pancakeFactory) {
-        this.pancakeService = pancakeService;
+    public PancakeFacade(PancakeFactory pancakeFactory) {
         this.pancakeFactory = pancakeFactory;
     }
 

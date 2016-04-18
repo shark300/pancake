@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,9 +14,9 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import io.github.pancake.configuration.PancakeConfiguration;
 import io.github.pancake.facade.PancakeFacade;
 import io.github.pancake.persistence.base.Pancake;
-import io.github.pancake.service.configuration.PancakeServiceConfiguration;
 
 /**
  * Pancake order confirmation HTML provider servlet.
@@ -32,21 +31,17 @@ public class OrderConfirmationServlet extends HttpServlet {
 
     @Override
     public void init() {
-        context = new AnnotationConfigApplicationContext(PancakeServiceConfiguration.class);
+        context = new AnnotationConfigApplicationContext(PancakeConfiguration.class);
         setPancakeFacade(context.getBean(PancakeFacade.class));
     }
 
-    /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-     */
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession();
         writeResponseHtml(response.getWriter(), (String) session.getAttribute("pancakesWithAmounts"));
     }
 
-    /**
-     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-     */
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Map<Pancake, String> pancakeOrder = createPancakeOrder(request);
         String pancakesWithAmounts = "";

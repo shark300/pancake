@@ -1,9 +1,12 @@
 package io.github.pancake.factory;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.FactoryBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import io.github.pancake.persistence.base.Pancake;
@@ -15,14 +18,15 @@ import io.github.pancake.persistence.base.Pancake;
  */
 @Component
 public class PancakeFactory implements FactoryBean<List<Pancake>> {
-    private List<Pancake> pancakes;
+    private final List<Pancake> pancakes;
+
+    public PancakeFactory() {
+        pancakes = Collections.unmodifiableList(Arrays.asList(Pancake.values()));
+    }
 
     @Override
     public List<Pancake> getObject() {
-        if (pancakes == null) {
-            initPancakes();
-        }
-        return pancakes;
+        return getPancakesCopy();
     }
 
     @SuppressWarnings("rawtypes")
@@ -36,11 +40,7 @@ public class PancakeFactory implements FactoryBean<List<Pancake>> {
         return true;
     }
 
-    private void initPancakes() {
-        setPancakes(Arrays.asList(Pancake.values()));
-    }
-
-    void setPancakes(List<Pancake> pancakes) {
-        this.pancakes = pancakes;
+    private List<Pancake> getPancakesCopy() {
+        return new ArrayList<Pancake>(pancakes);
     }
 }

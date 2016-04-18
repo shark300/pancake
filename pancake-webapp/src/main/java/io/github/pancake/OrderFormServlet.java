@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,9 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import io.github.pancake.configuration.PancakeConfiguration;
 import io.github.pancake.facade.PancakeFacade;
 import io.github.pancake.persistence.base.Pancake;
-import io.github.pancake.service.configuration.PancakeServiceConfiguration;
 
 /**
  * Pancake order form HTML provider servlet.
@@ -29,13 +28,11 @@ public class OrderFormServlet extends HttpServlet {
 
     @Override
     public void init() {
-        context = new AnnotationConfigApplicationContext(PancakeServiceConfiguration.class);
+        context = new AnnotationConfigApplicationContext(PancakeConfiguration.class);
         setPancakeFacade(context.getBean(PancakeFacade.class));
     }
 
-    /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-     */
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         PrintWriter out = response.getWriter();
         out.println("<html>");

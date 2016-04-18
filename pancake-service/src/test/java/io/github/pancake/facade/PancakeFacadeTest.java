@@ -9,7 +9,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import io.github.pancake.factory.PancakeFactory;
-import io.github.pancake.service.PancakeService;
 
 /**
  * Test class for {@link PancakeFacade}.
@@ -19,14 +18,12 @@ import io.github.pancake.service.PancakeService;
 public class PancakeFacadeTest {
     private PancakeFacade underTest;
     @Mock
-    private PancakeService mockPancakeService;
-    @Mock
     private PancakeFactory mockPancakeFactory;
 
     @BeforeMethod
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        underTest = new PancakeFacade(mockPancakeService, mockPancakeFactory);
+        underTest = new PancakeFacade(mockPancakeFactory);
     }
 
     @Test
