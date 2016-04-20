@@ -70,13 +70,13 @@
             </dependency>
             <!-- Pancake Persistence -->
             <dependency>
-		<groupId>com.github.gergelyrozsonits.iogithubpancakepersistence</groupId>
-		<artifactId>io-github-pancake-persistence-api</artifactId>
+                <groupId>com.github.gergelyrozsonits.iogithubpancakepersistence</groupId>
+                <artifactId>io-github-pancake-persistence-api</artifactId>
                 <version>${io.github.pancake.persistence.version}</version>
             </dependency>
             <dependency>
-		<groupId>com.github.gergelyrozsonits.iogithubpancakepersistence</groupId>
-		<artifactId>io-github-pancake-persistence-impl</artifactId>
+                <groupId>com.github.gergelyrozsonits.iogithubpancakepersistence</groupId>
+                <artifactId>io-github-pancake-persistence-impl</artifactId>
                 <version>${io.github.pancake.persistence.version}</version>
             </dependency>
             <!-- Testing -->

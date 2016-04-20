@@ -40,7 +40,7 @@
         </dependency>
         <!-- Modules -->
         <dependency>
-            <groupId>io.github.pancake.persistence</groupId>
+            <groupId>com.github.gergelyrozsonits.iogithubpancakepersistence</groupId>
             <artifactId>io-github-pancake-persistence-api</artifactId>
         </dependency>
         <!-- Testing -->
