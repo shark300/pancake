@@ -11,62 +11,75 @@
     <packaging>war</packaging>
     <name>Pancake Webapp</name>
 
-    <dependencies>
-        <!-- Logging -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jcl-over-slf4j</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <!-- Spring -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-beans</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-expression</artifactId>
-        </dependency>
-        <!-- Modules -->
-        <dependency>
-            <groupId>io.github.pancake</groupId>
-            <artifactId>pancake-service</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.github.gergelyrozsonits.iogithubpancakepersistence</groupId>
-            <artifactId>io-github-pancake-persistence-api</artifactId>
-        </dependency>
-        <!-- Testing -->
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
-
-    <build>
-        <finalName>pancake-webapp</finalName>
-    </build>
+	<dependencies>
+		<!-- Servlet API -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+		</dependency>
+		<!-- Spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+		</dependency>
+		
+		
+<!-- 		<dependency> -->
+<!--         <groupId>org.springframework</groupId> -->
+<!--         <artifactId>spring-framework-bom</artifactId> -->
+<!--         <version>4.0.4.RELEASE</version> -->
+<!--         <type>pom</type> -->
+<!--         <scope>import</scope> -->
+<!--       </dependency> -->
+<!--       <dependency> -->
+<!--       <groupId>org.springframework</groupId> -->
+<!--       <artifactId>spring-tx</artifactId> -->
+<!--       <version>4.0.4.RELEASE</version> -->
+<!--     </dependency> -->
+		
+		
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework</groupId> -->
+<!-- 			<artifactId>spring-web</artifactId> -->
+<!-- 		</dependency> -->
+		<!-- Modules -->
+		<dependency>
+			<groupId>io.github.pancake</groupId>
+			<artifactId>pancake-service</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.gergelyrozsonits.iogithubpancakepersistence</groupId>
+			<artifactId>io-github-pancake-persistence-api</artifactId>
+		</dependency>
+		<!-- Logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+		</dependency>
+		<!-- Testing -->
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
 
 </project>

@@ -8,113 +8,121 @@
     <packaging>pom</packaging>
     <name>Pancake App</name>
 
-    <properties>
-        <java.version>1.8</java.version>
-        <maven.compiler.version>3.5.1</maven.compiler.version>
-        <jcl.slf4j.version>1.7.19</jcl.slf4j.version>
-        <logback.version>1.1.6</logback.version>
-        <servlet.version>3.1.0</servlet.version>
-        <springframework.version>4.2.5.RELEASE</springframework.version>
-        <mockito.version>1.10.19</mockito.version>
-        <testng.version>6.9.10</testng.version>
-        <io.github.pancake.version>1.0</io.github.pancake.version>
-        <io.github.pancake.persistence.version>1.0</io.github.pancake.persistence.version>
-    </properties>
+	<properties>
+		<!-- Build -->
+		<java.version>1.8</java.version>
+		<maven.compiler.version>3.5.1</maven.compiler.version>
+		<plugin.maven.surefire.version>2.19.1</plugin.maven.surefire.version>
+		<!-- Servlet API -->
+		<servlet.version>3.1.0</servlet.version>
+		<jstl.version>1.2</jstl.version>
+		<!-- Spring -->
+		<spring.version>4.2.5.RELEASE</spring.version>
+		<!-- Parameter values -->
+		<skip.unit.tests>false</skip.unit.tests>
+		<!-- Modules -->
+		<pancake.persistence.version>1.0</pancake.persistence.version>
+		<pancakeapp.version>1.0-SNAPSHOT</pancakeapp.version>
+		<!-- Logging -->
+		<jcl.slf4j.version>1.7.19</jcl.slf4j.version>
+		<logback.version>1.1.6</logback.version>
+		<!-- Testing -->
+		<mockito.version>1.10.19</mockito.version>
+		<testng.version>6.9.10</testng.version>
+	</properties>
 
-    <dependencyManagement>
-        <dependencies>
-            <!-- Logging -->
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>jcl-over-slf4j</artifactId>
-                <version>${jcl.slf4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>ch.qos.logback</groupId>
-                <artifactId>logback-classic</artifactId>
-                <version>${logback.version}</version>
-            </dependency>
-            <!-- Servlet API -->
-            <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>javax.servlet-api</artifactId>
-                <version>${servlet.version}</version>
-                <scope>provided</scope>
-            </dependency>
-            <!-- Spring -->
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-beans</artifactId>
-                <version>${springframework.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-context</artifactId>
-                <version>${springframework.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-core</artifactId>
-                <version>${springframework.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-expression</artifactId>
-                <version>${springframework.version}</version>
-            </dependency>
-            <!-- Modules -->
-            <dependency>
-                <groupId>io.github.pancake</groupId>
-                <artifactId>pancake-service</artifactId>
-                <version>${io.github.pancake.version}</version>
-            </dependency>
-            <!-- Pancake Persistence -->
-            <dependency>
-                <groupId>com.github.gergelyrozsonits.iogithubpancakepersistence</groupId>
-                <artifactId>io-github-pancake-persistence-api</artifactId>
-                <version>${io.github.pancake.persistence.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.github.gergelyrozsonits.iogithubpancakepersistence</groupId>
-                <artifactId>io-github-pancake-persistence-impl</artifactId>
-                <version>${io.github.pancake.persistence.version}</version>
-            </dependency>
-            <!-- Testing -->
-            <dependency>
-                <groupId>org.testng</groupId>
-                <artifactId>testng</artifactId>
-                <version>${testng.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.mockito</groupId>
-                <artifactId>mockito-all</artifactId>
-                <version>${mockito.version}</version>
-                <scope>test</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+	<dependencyManagement>
+		<dependencies>
+			<!-- Servlet API -->
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>
+				<version>${servlet.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>jstl</artifactId>
+				<version>${jstl.version}</version>
+			</dependency>
+			<!-- Spring -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-webmvc</artifactId>
+				<version>${spring.version}</version>
+			</dependency>
+<!-- 			<dependency> -->
+<!-- 				<groupId>org.springframework</groupId> -->
+<!-- 				<artifactId>spring-web</artifactId> -->
+<!-- 				<version>${spring.version}</version> -->
+<!-- 			</dependency> -->
+			<!-- Modules -->
+			<dependency>
+				<groupId>com.github.gergelyrozsonits.iogithubpancakepersistence</groupId>
+				<artifactId>io-github-pancake-persistence-api</artifactId>
+				<version>${pancake.persistence.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.gergelyrozsonits.iogithubpancakepersistence</groupId>
+				<artifactId>io-github-pancake-persistence-impl</artifactId>
+				<version>${pancake.persistence.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.github.pancake</groupId>
+				<artifactId>pancake-service</artifactId>
+				<version>${pancakeapp.version}</version>
+			</dependency>
+			<!-- Logging -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>jcl-over-slf4j</artifactId>
+				<version>${jcl.slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-classic</artifactId>
+				<version>${logback.version}</version>
+			</dependency>
+			<!-- Testing -->
+			<dependency>
+				<groupId>org.testng</groupId>
+				<artifactId>testng</artifactId>
+				<version>${testng.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-all</artifactId>
+				<version>${mockito.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
-    <modules>
-        <module>pancake-webapp</module>
-        <module>pancake-service</module>
-    </modules>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.version}</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${plugin.maven.surefire.version}</version>
+				<configuration>
+					<skip>${skip.unit.tests}</skip>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
-    <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>${maven.compiler.version}</version>
-                    <configuration>
-                        <source>${java.version}</source>
-                        <target>${java.version}</target>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
     <repositories>
         <repository>
             <id>jitpack.io</id>
