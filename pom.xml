@@ -68,14 +68,15 @@
                 <artifactId>pancake-service</artifactId>
                 <version>${io.github.pancake.version}</version>
             </dependency>
+            <!-- Pancake Persistence -->
             <dependency>
-                <groupId>io.github.pancake.persistence</groupId>
-                <artifactId>io-github-pancake-persistence-api</artifactId>
+		<groupId>com.github.gergelyrozsonits.iogithubpancakepersistence</groupId>
+		<artifactId>io-github-pancake-persistence-api</artifactId>
                 <version>${io.github.pancake.persistence.version}</version>
             </dependency>
             <dependency>
-                <groupId>io.github.pancake.persistence</groupId>
-                <artifactId>io-github-pancake-persistence-impl</artifactId>
+		<groupId>com.github.gergelyrozsonits.iogithubpancakepersistence</groupId>
+		<artifactId>io-github-pancake-persistence-impl</artifactId>
                 <version>${io.github.pancake.persistence.version}</version>
             </dependency>
             <!-- Testing -->
@@ -114,5 +115,10 @@
             </plugins>
         </pluginManagement>
     </build>
-
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
 </project>
