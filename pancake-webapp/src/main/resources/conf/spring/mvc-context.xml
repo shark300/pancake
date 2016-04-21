@@ -10,7 +10,9 @@
 
 	<context:component-scan base-package="io.github.pancake.app io.github.pancake.service" />
 	<context:property-placeholder location="classpath:conf/configuration.properties" />
-	
+
+	<mvc:resources location="/WEB-INF/assets/" mapping="/assets/**" />
+	<mvc:resources location="/WEB-INF/images/" mapping="/images/**" />	
 	<mvc:annotation-driven />
 	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -18,8 +20,11 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 	
-	<mvc:resources location="/WEB-INF/assets/" mapping="/assets/**" />
-	<mvc:resources location="/WEB-INF/images/" mapping="/images/**" />
-	
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename">
+            <value>messages</value>
+        </property>
+    </bean>
+
 </beans>
 		

@@ -7,7 +7,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Ordering</title>
+	<title>Pancake App</title>
 	<link rel="stylesheet" href="<c:url value="assets/style.css" />" type="text/css" media="all">
 </head>
 <body>
@@ -19,30 +19,31 @@
 			<div id="navigation">
 				<ul>
 					<li><a href="<c:url value='/' />">Home</a></li>
-					<li><a href="<c:url value='/orderPancakesForm.html' />">Ordering</a></li>
+					<li><a href="<c:url value='/orderForm.html' />">Ordering</a></li>
 				</ul>
 			</div>
 			<div id="content">
-				<form:form modelAttribute="orderPancakesRequest" action="orderPancakesPost.html" enctype="multipart/form-data">
+				<form:form modelAttribute="orderRequest" action="orderPost.html">
 					<div class="form-group" >
 						<table>
 							<tr>
 								<th>Type</th>
 								<th>Ammount</th>
 							</tr>
-							<c:forEach var="orderedPancakes" items="${orderPancakesForm.orderedPancakes}">
+							<c:forEach var="type" items="${orderFormModel.availablePancakes}" varStatus="iterIndex">
 								<tr>
-									<td>${orderedPancakes.type}</td>
-									<td>
-										<form:select path="orderedAmounts" multiple="false">
-											<form:options items="${orderPancakesForm.orderAmounts}" />
-										</form:select>
-									</td>
+									<form:hidden path="orderedAmounts[${iterIndex.index}].type" value="${type}" />
+									<td>${type}</td>
+									<td><form:select path="orderedAmounts[${iterIndex.index}].amount" items="${orderFormModel.availableAmounts}" multiple="false" /></td>
 								</tr>
 							</c:forEach>
 						</table>
+						<p><form:errors path="orderedAmounts" element="div" cssClass="validation-error" /></p>
 					</div>
-					<p><form:input path="email" id="input_email" placeholder="Email address" /></p>
+					<p>
+						<form:input path="email" placeholder="Email address" />
+						<form:errors path="email" element="div" cssClass="validation-error" />
+					</p>
 					<p><button type="submit" class="btn btn-default">Submit</button></p>
 				</form:form>
 			</div>

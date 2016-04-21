@@ -23,6 +23,8 @@
 		<jstl.version>1.2</jstl.version>
 		<!-- Spring -->
 		<spring.version>4.2.5.RELEASE</spring.version>
+		<!-- Hibernate -->
+		<hibernate.version>5.2.4.Final</hibernate.version>
 		<!-- Parameter values -->
 		<skip.unit.tests>false</skip.unit.tests>
 		<!-- Modules -->
@@ -60,11 +62,12 @@
 				<artifactId>spring-webmvc</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.springframework</groupId> -->
-<!-- 				<artifactId>spring-web</artifactId> -->
-<!-- 				<version>${spring.version}</version> -->
-<!-- 			</dependency> -->
+			<!-- Hibernate -->
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-validator</artifactId>
+				<version>${hibernate.version}</version>
+			</dependency>
 			<!-- Modules -->
 			<dependency>
 				<groupId>com.github.gergelyrozsonits.iogithubpancakepersistence</groupId>

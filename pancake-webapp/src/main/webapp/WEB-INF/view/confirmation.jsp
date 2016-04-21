@@ -13,7 +13,7 @@
 	<div id="layout">
 		<div id="container">
 			<div id="header">
-				<h1>Welcome in Pancake App!</h1>
+				<h1>Thank you for ordering!</h1>
 			</div>
 			<div id="navigation">
 				<ul>
@@ -22,7 +22,14 @@
 				</ul>
 			</div>
 			<div id="content">
-				<img src="images/pancake.jpg" />
+			<p>You ordered:</p>
+				<ul>
+					<c:forEach var="orderedAmount" items="${orderRequest.orderedAmounts}">
+						<c:if test="${orderedAmount.amount!='0'}">
+							<li>${orderedAmount.type} (${orderedAmount.amount} pcs)</li>
+						</c:if>
+					</c:forEach>
+				</ul>
 			</div>
 		</div>
 	</div>
