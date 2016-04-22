@@ -1,0 +1,44 @@
+package io.github.pancake.app.order.view.support;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.ModelAttribute;
+
+import io.github.pancake.app.order.view.controller.OrderFormController;
+import io.github.pancake.app.order.view.controller.OrderPostController;
+import io.github.pancake.app.order.view.model.OrderFormModel;
+import io.github.pancake.persistence.base.Pancake;
+import io.github.pancake.service.pancake.facade.PancakeFacade;
+
+/**
+ * Builder for {@link OrderFormModel} class which provides {@link ModelAttribute}
+ * for {@link OrderFormController} and {@link OrderPostController}.
+ * @author Bence_Kornis
+ */
+@Component
+public class OrderFormModelBuilder {
+    @Autowired
+    private PancakeFacade pancakeFacade;
+
+    /**
+     * Initialize {@link OrderFormModel} which contains available
+     * amounts of ordering and available pancake types
+     * @return the {@link OrderFormModel}
+     */
+    public OrderFormModel getOrderFormModel() {
+        return new OrderFormModel.Builder()
+                .withAvailableAmounts(initAvailableAmounts())
+                .withAvailablePancakes(initAvailablePancakes())
+                .build();
+    }
+
+    private List<Integer> initAvailableAmounts() {
+        return pancakeFacade.getAvailableAmounts();
+    }
+
+    private List<Pancake> initAvailablePancakes() {
+        return pancakeFacade.getOrderablePancakes();
+    }
+}

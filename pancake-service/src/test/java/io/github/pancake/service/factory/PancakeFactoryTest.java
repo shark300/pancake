@@ -9,7 +9,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import io.github.pancake.persistence.base.Pancake;
-import io.github.pancake.service.factory.PancakeFactory;
+import io.github.pancake.service.pancake.factory.PancakeFactory;
 
 /**
  * Test class for {@link PancakeFactory}.

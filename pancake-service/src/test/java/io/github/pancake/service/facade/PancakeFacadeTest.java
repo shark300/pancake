@@ -8,8 +8,8 @@ import org.mockito.MockitoAnnotations;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import io.github.pancake.service.facade.PancakeFacade;
-import io.github.pancake.service.factory.PancakeFactory;
+import io.github.pancake.service.pancake.facade.PancakeFacade;
+import io.github.pancake.service.pancake.factory.PancakeFactory;
 
 /**
  * Test class for {@link PancakeFacade}.

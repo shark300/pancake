@@ -1,8 +1,12 @@
-package io.github.pancake.app.home.controller;
+package io.github.pancake.app.home.view.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+/**
+ * Controller class for the homepage.
+ * @author Bence_Kornis
+ */
 @Controller
 public class HomeController {
     public static final String REQUEST_MAPPING = "/";

@@ -1,4 +1,4 @@
-package io.github.pancake.app.confirmation.controller;
+package io.github.pancake.app.confirmation.view.controller;
 
 import javax.validation.Valid;
 
@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import io.github.pancake.app.order.view.model.OrderRequest;
 
+/**
+ * Controller class for the confirmation page.
+ * @author Bence_Kornis
+ */
 @Controller
 public class ConfirmationController {
     public static final String REQUEST_MAPPING = "/confirmation.html";

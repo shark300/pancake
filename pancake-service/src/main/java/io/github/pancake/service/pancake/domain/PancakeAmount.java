@@ -1,21 +1,14 @@
-package io.github.pancake.app.domain;
+package io.github.pancake.service.pancake.domain;
 
 import io.github.pancake.persistence.base.Pancake;
 
 /**
- * PancakeAmount object contains pancake type and ordered amount.
+ * Contains pancake type and ordered amount.
  * @author Bence_Kornis
  */
 public class PancakeAmount {
     private Pancake type;
     private int amount;
-
-    public PancakeAmount() {}
-
-    public PancakeAmount(Pancake type, int amount) {
-        this.type = type;
-        this.amount = amount;
-    }
 
     public Pancake getType() {
         return type;

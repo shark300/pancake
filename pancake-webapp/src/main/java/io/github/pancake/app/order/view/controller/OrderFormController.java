@@ -8,8 +8,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import io.github.pancake.app.order.view.model.OrderFormModel;
 import io.github.pancake.app.order.view.model.OrderRequest;
-import io.github.pancake.app.order.view.model.builder.OrderFormModelBuilder;
+import io.github.pancake.app.order.view.support.OrderFormModelBuilder;
 
+/**
+ * Controller class for the order form page.
+ * @author Bence_Kornis
+ */
 @Controller
 public class OrderFormController {
     public static final String REQUEST_MAPPING = "/orderForm.html";

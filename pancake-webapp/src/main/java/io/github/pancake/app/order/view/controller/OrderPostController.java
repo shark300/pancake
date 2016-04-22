@@ -12,9 +12,15 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import io.github.pancake.app.order.view.model.OrderFormModel;
 import io.github.pancake.app.order.view.model.OrderRequest;
-import io.github.pancake.app.order.view.model.builder.OrderFormModelBuilder;
-import io.github.pancake.app.order.view.validation.OrderRequestValidator;
+import io.github.pancake.app.order.view.support.OrderFormModelBuilder;
+import io.github.pancake.app.order.view.support.OrderRequestValidator;
+import io.github.pancake.app.order.view.transform.OrderRequestTransformer;
+import io.github.pancake.service.order.facade.OrderFacade;
 
+/**
+ * Controller class for the order form page POST method.
+ * @author Bence_Kornis
+ */
 @Controller
 public class OrderPostController {
     public static final String REQUEST_MAPPING = "/orderPost.html";
@@ -22,6 +28,10 @@ public class OrderPostController {
     private OrderFormModelBuilder orderFormModelBuilder;
     @Autowired
     private OrderRequestValidator orderRequestValidator;
+    @Autowired
+    private OrderRequestTransformer orderRequestTransformer;
+    @Autowired
+    private OrderFacade orderFacade;
 
     @ModelAttribute("orderRequest")
     public OrderRequest createOrderModel(@ModelAttribute OrderRequest orderRequest) {
@@ -42,9 +52,14 @@ public class OrderPostController {
         if (bindingResult.hasErrors()) {
             result = "order";
         } else {
+            saveOrder(orderRequest);
             redirectAttributes.addFlashAttribute("orderRequest", orderRequest);
             result = "redirect:confirmation.html";
         }
         return result;
+    }
+
+    private void saveOrder(OrderRequest orderRequest) {
+        orderFacade.saveOrder(orderRequestTransformer.transformOrderRequest(orderRequest));
     }
 }

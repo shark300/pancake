@@ -1,4 +1,4 @@
-package io.github.pancake.service.factory;
+package io.github.pancake.service.pancake.factory;
 
 import java.util.ArrayList;
 import java.util.Arrays;
