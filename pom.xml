@@ -26,6 +26,8 @@
 		<spring.version>4.2.5.RELEASE</spring.version>
 		<!-- Hibernate -->
 		<hibernate.version>5.2.4.Final</hibernate.version>
+		<!-- Guava -->
+		<guava.version>19.0</guava.version>
 		<!-- Parameter values -->
 		<skip.unit.tests>false</skip.unit.tests>
 		<!-- Modules -->
@@ -68,6 +70,12 @@
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-validator</artifactId>
 				<version>${hibernate.version}</version>
+			</dependency>
+			<!-- Guava -->
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>${guava.version}</version>
 			</dependency>
 			<!-- Modules -->
 			<dependency>

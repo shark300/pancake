@@ -17,6 +17,11 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 		</dependency>
+		<!-- Guava -->
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+		</dependency>
 		<!-- Modules -->
 		<dependency>
 			<groupId>com.github.gergelyrozsonits.iogithubpancakepersistence</groupId>

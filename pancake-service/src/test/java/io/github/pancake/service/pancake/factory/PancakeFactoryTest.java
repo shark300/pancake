@@ -1,15 +1,15 @@
-package io.github.pancake.service.factory;
+package io.github.pancake.service.pancake.factory;
+
+import static org.mockito.MockitoAnnotations.initMocks;
+import static org.testng.Assert.assertEquals;
 
 import java.util.Arrays;
 import java.util.List;
 
-import org.mockito.MockitoAnnotations;
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import io.github.pancake.persistence.base.Pancake;
-import io.github.pancake.service.pancake.factory.PancakeFactory;
 
 /**
  * Test class for {@link PancakeFactory}.
@@ -18,22 +18,20 @@ import io.github.pancake.service.pancake.factory.PancakeFactory;
  */
 public class PancakeFactoryTest {
     private PancakeFactory underTest;
-    private List<Pancake> pancakes;
-    private List<Pancake> testPancakes;
 
     @BeforeMethod
     public void setUp() {
-        MockitoAnnotations.initMocks(this);
-        testPancakes = Arrays.asList(Pancake.values());
+        initMocks(this);
         underTest = new PancakeFactory();
     }
 
     @Test
     public void testGetObjectShouldReturnTheListOfPancakesWhenPancakesAreSet() {
-        // GIVEN in setUp
+        // GIVEN
+        List<Pancake> testPancakes = Arrays.asList(Pancake.values());
         // WHEN
-        pancakes = underTest.getObject();
+        List<Pancake> pancakes = underTest.getObject();
         // THEN
-        Assert.assertEquals(pancakes, testPancakes);
+        assertEquals(pancakes, testPancakes);
     }
 }
