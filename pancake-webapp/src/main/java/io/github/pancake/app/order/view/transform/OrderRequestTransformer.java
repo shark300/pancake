@@ -25,7 +25,7 @@ public class OrderRequestTransformer {
      * @return the {@link Order}
      */
     public Order transformOrderRequest(OrderRequest orderRequest) {
-        return new Order.Builder()
+        return Order.builder()
                 .withOrderedAmounts(transformOrderedAmounts(orderRequest))
                 .withEmail(orderRequest.getEmail())
                 .build();

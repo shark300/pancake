@@ -2,19 +2,22 @@ package io.github.pancake.app.order.view.model;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.ModelAttribute;
-
-import io.github.pancake.app.order.view.controller.OrderFormController;
-import io.github.pancake.app.order.view.controller.OrderPostController;
 import io.github.pancake.persistence.base.Pancake;
 
 /**
- * {@link ModelAttribute} provider class for {@link OrderFormController} and {@link OrderPostController}.
+ * {@link org.springframework.web.bind.annotation.ModelAttribute} provider class for
+ * {@link io.github.pancake.app.order.view.controller.OrderFormController} and
+ * {@link io.github.pancake.app.order.view.controller.OrderPostController}.
  * @author Bence_Kornis
  */
 public class OrderFormModel {
     private List<Integer> availableAmounts;
     private List<Pancake> availablePancakes;
+
+    private OrderFormModel(Builder builder) {
+        this.availableAmounts = builder.availableAmounts;
+        this.availablePancakes = builder.availablePancakes;
+    }
 
     public List<Integer> getAvailableAmounts() {
         return availableAmounts;
@@ -24,14 +27,16 @@ public class OrderFormModel {
         return availablePancakes;
     }
 
-    private OrderFormModel(Builder builder) {
-        this.availableAmounts = builder.availableAmounts;
-        this.availablePancakes = builder.availablePancakes;
+    public static Builder builder() {
+        return new Builder();
     }
 
     public static class Builder {
         private List<Integer> availableAmounts;
         private List<Pancake> availablePancakes;
+
+        private Builder() {
+        }
 
         public Builder withAvailableAmounts(List<Integer> availableAmounts) {
             this.availableAmounts = availableAmounts;

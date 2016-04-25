@@ -1,5 +1,7 @@
 package io.github.pancake.service.order.facade;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -22,22 +24,25 @@ public class OrderFacade {
      * @param order the {@link Order} to save
      */
     public void saveOrder(Order order) {
-        for (PancakeAmount pancakeAmount : order.getOrderedAmounts()) {
-            if (pancakeAmount.getAmount() != 0) {
-                logger.info(createLogMessage(order.getEmail(), pancakeAmount));
-            }
+        String orderedAmountsMessage = createOrderedAmountsMessage(order.getOrderedAmounts());
+        if (!orderedAmountsMessage.isEmpty()) {
+            logger.info("'{}' ordered: {}", order.getEmail(), orderedAmountsMessage);
         }
     }
 
-    private String createLogMessage(String email, PancakeAmount pancakeAmount) {
-        return new StringBuilder("'")
-                .append(email)
-                .append("' ordered ")
-                .append(pancakeAmount.getAmount())
-                .append(" pcs of ")
-                .append(pancakeAmount.getType())
-                .append(" pancake")
-                .toString();
+    private String createOrderedAmountsMessage(List<PancakeAmount> orderedAmounts) {
+        StringBuilder builder = new StringBuilder();
+        for (PancakeAmount pancakeAmount : orderedAmounts) {
+            if (pancakeAmount.getAmount() != 0) {
+                if (builder.length() != 0) {
+                    builder.append(", ");
+                }
+                builder.append(pancakeAmount.getAmount())
+                        .append(" pcs of ")
+                        .append(pancakeAmount.getType());
+            }
+        }
+        return builder.toString();
     }
 
     @VisibleForTesting

@@ -3,14 +3,20 @@ package io.github.pancake.app.domain;
 import io.github.pancake.persistence.base.Pancake;
 
 /**
- * PancakeAmount object contains pancake type and ordered amount.
+ * Contains pancake type and ordered amount.
  * @author Bence_Kornis
  */
 public class PancakeAmount {
     private Pancake type;
     private int amount;
 
-    public PancakeAmount() {}
+    public PancakeAmount() {
+    }
+
+    private PancakeAmount(Builder builder) {
+        this.type = builder.type;
+        this.amount = builder.amount;
+    }
 
     public PancakeAmount(Pancake type, int amount) {
         this.type = type;
@@ -33,14 +39,16 @@ public class PancakeAmount {
         this.amount = amount;
     }
 
-    private PancakeAmount(Builder builder) {
-        this.type = builder.type;
-        this.amount = builder.amount;
+    public static Builder builder() {
+        return new Builder();
     }
 
     public static class Builder {
         private Pancake type;
         private int amount;
+
+        private Builder() {
+        }
 
         public Builder withType(Pancake type) {
             this.type = type;

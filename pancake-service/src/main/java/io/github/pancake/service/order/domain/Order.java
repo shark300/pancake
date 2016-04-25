@@ -12,30 +12,29 @@ public class Order {
     private List<PancakeAmount> orderedAmounts;
     private String email;
 
-    public List<PancakeAmount> getOrderedAmounts() {
-        return orderedAmounts;
+    private Order(Builder builder) {
+        this.orderedAmounts = builder.orderedAmounts;
+        this.email = builder.email;
     }
 
-    public void setOrderedAmounts(List<PancakeAmount> orderedAmounts) {
-        this.orderedAmounts = orderedAmounts;
+    public List<PancakeAmount> getOrderedAmounts() {
+        return orderedAmounts;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    private Order(Builder builder) {
-        this.orderedAmounts = builder.orderedAmounts;
-        this.email = builder.email;
+    public static Builder builder() {
+        return new Builder();
     }
 
     public static class Builder {
         private List<PancakeAmount> orderedAmounts;
         private String email;
+
+        private Builder() {
+        }
 
         public Builder withOrderedAmounts(List<PancakeAmount> orderedAmounts) {
             this.orderedAmounts = orderedAmounts;

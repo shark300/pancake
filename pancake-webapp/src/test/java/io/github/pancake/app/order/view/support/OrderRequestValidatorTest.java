@@ -43,15 +43,9 @@ public class OrderRequestValidatorTest {
     public void testValidateShouldAddErrorWhenLimitExceeds() {
         // GIVEN
         OrderRequest orderRequest = new OrderRequest();
-        PancakeAmount amount1 = new PancakeAmount.Builder()
-                .withType(Pancake.CINNAMON)
-                .withAmount(2)
-                .build();
-        PancakeAmount amount2 = new PancakeAmount.Builder()
-                .withType(Pancake.COCOA)
-                .withAmount(1)
-                .build();
-        orderRequest.setOrderedAmounts(Arrays.asList(amount1, amount2));
+        PancakeAmount cinnamonAmount = createPancakeAmount(Pancake.CINNAMON, 2);
+        PancakeAmount cocoaAmount = createPancakeAmount(Pancake.COCOA, 1);
+        orderRequest.setOrderedAmounts(Arrays.asList(cinnamonAmount, cocoaAmount));
         when(mockPancakeFacade.getOrderLimit()).thenReturn(2);
         // WHEN
         underTest.validate(orderRequest, mockErrors);
@@ -63,19 +57,21 @@ public class OrderRequestValidatorTest {
     public void testValidateShouldNotAddErrorWhenLimitDoNotExceeds() {
         // GIVEN
         OrderRequest orderRequest = new OrderRequest();
-        PancakeAmount amount1 = new PancakeAmount.Builder()
-                .withType(Pancake.CINNAMON)
-                .withAmount(1)
-                .build();
-        PancakeAmount amount2 = new PancakeAmount.Builder()
-                .withType(Pancake.COCOA)
-                .withAmount(1)
-                .build();
-        orderRequest.setOrderedAmounts(Arrays.asList(amount1, amount2));
+        PancakeAmount cinnamonAmount = createPancakeAmount(Pancake.CINNAMON, 1);
+        PancakeAmount cocoaAmount = createPancakeAmount(Pancake.COCOA, 1);
+        orderRequest.setOrderedAmounts(Arrays.asList(cinnamonAmount, cocoaAmount));
         when(mockPancakeFacade.getOrderLimit()).thenReturn(2);
         // WHEN
         underTest.validate(orderRequest, mockErrors);
         // THEN
         verify(mockErrors, never()).rejectValue(anyString(), anyString(), any(), anyString());
+    }
+
+    private PancakeAmount createPancakeAmount(Pancake type, int amount) {
+        PancakeAmount pancakeAmount = PancakeAmount.builder()
+                .withType(type)
+                .withAmount(amount)
+                .build();
+        return pancakeAmount;
     }
 }

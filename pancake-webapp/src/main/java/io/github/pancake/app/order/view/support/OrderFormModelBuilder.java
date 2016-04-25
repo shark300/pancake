@@ -4,17 +4,16 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.ModelAttribute;
 
-import io.github.pancake.app.order.view.controller.OrderFormController;
-import io.github.pancake.app.order.view.controller.OrderPostController;
 import io.github.pancake.app.order.view.model.OrderFormModel;
 import io.github.pancake.persistence.base.Pancake;
 import io.github.pancake.service.pancake.facade.PancakeFacade;
 
 /**
- * Builder for {@link OrderFormModel} class which provides {@link ModelAttribute}
- * for {@link OrderFormController} and {@link OrderPostController}.
+ * Builder for {@link OrderFormModel} class which provides
+ * {@link org.springframework.web.bind.annotation.ModelAttribute} for
+ * {@link io.github.pancake.app.order.view.controller.OrderFormController} and
+ * {@link io.github.pancake.app.order.view.controller.OrderPostController}.
  * @author Bence_Kornis
  */
 @Component
@@ -28,7 +27,7 @@ public class OrderFormModelBuilder {
      * @return the {@link OrderFormModel}
      */
     public OrderFormModel getOrderFormModel() {
-        return new OrderFormModel.Builder()
+        return OrderFormModel.builder()
                 .withAvailableAmounts(initAvailableAmounts())
                 .withAvailablePancakes(initAvailablePancakes())
                 .build();

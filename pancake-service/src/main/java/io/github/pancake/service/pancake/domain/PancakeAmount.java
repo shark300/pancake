@@ -10,30 +10,29 @@ public class PancakeAmount {
     private Pancake type;
     private int amount;
 
-    public Pancake getType() {
-        return type;
+    private PancakeAmount(Builder builder) {
+        this.type = builder.type;
+        this.amount = builder.amount;
     }
 
-    public void setType(Pancake type) {
-        this.type = type;
+    public Pancake getType() {
+        return type;
     }
 
     public int getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
-
-    private PancakeAmount(Builder builder) {
-        this.type = builder.type;
-        this.amount = builder.amount;
+    public static Builder builder() {
+        return new Builder();
     }
 
     public static class Builder {
         private Pancake type;
         private int amount;
+
+        private Builder() {
+        }
 
         public Builder withType(Pancake type) {
             this.type = type;

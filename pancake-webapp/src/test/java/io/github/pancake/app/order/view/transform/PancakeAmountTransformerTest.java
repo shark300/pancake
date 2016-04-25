@@ -25,7 +25,7 @@ public class PancakeAmountTransformerTest {
     public void testTransformShouldReturnTransformedObjectWhenInvoked() {
         // GIVEN
         io.github.pancake.app.domain.PancakeAmount pancakeAmount =
-                new io.github.pancake.app.domain.PancakeAmount.Builder()
+                io.github.pancake.app.domain.PancakeAmount.builder()
                         .withType(any())
                         .withAmount(anyInt())
                         .build();

@@ -36,22 +36,24 @@ public class OrderRequestTransformerTest {
     public void testTransformOrderRequestShouldReturnTransformedOrderWhenInvoked() {
         // GIVEN
         OrderRequest orderRequest = new OrderRequest();
-        PancakeAmount amount1 = new PancakeAmount.Builder()
-                .withType(Pancake.CINNAMON)
-                .withAmount(1)
-                .build();
-        PancakeAmount amount2 = new PancakeAmount.Builder()
-                .withType(Pancake.COCOA)
-                .withAmount(1)
-                .build();
-        orderRequest.setOrderedAmounts(Arrays.asList(amount1, amount2));
+        PancakeAmount cinnamonAmount = createPancakeAmount(Pancake.CINNAMON, 1);
+        PancakeAmount cocoaAmount = createPancakeAmount(Pancake.COCOA, 1);
+        orderRequest.setOrderedAmounts(Arrays.asList(cinnamonAmount, cocoaAmount));
         orderRequest.setEmail(EMAIL);
         // WHEN
         Order result = underTest.transformOrderRequest(orderRequest);
         // THEN
-        verify(mockPancakeAmountTransformer).transform(amount1);
-        verify(mockPancakeAmountTransformer).transform(amount2);
+        verify(mockPancakeAmountTransformer).transform(cinnamonAmount);
+        verify(mockPancakeAmountTransformer).transform(cocoaAmount);
         assertEquals(result.getEmail(), EMAIL);
         assertEquals(result.getOrderedAmounts().size(), orderRequest.getOrderedAmounts().size());
+    }
+
+    private PancakeAmount createPancakeAmount(Pancake type, int amount) {
+        PancakeAmount pancakeAmount = PancakeAmount.builder()
+                .withType(type)
+                .withAmount(amount)
+                .build();
+        return pancakeAmount;
     }
 }
