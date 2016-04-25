@@ -44,7 +44,7 @@ public class OrderPostController {
     }
 
     @RequestMapping(value = REQUEST_MAPPING, method = RequestMethod.POST)
-    private String order(@Valid @ModelAttribute("orderRequest") OrderRequest orderRequest,
+    public String order(@Valid @ModelAttribute("orderRequest") OrderRequest orderRequest,
             BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         orderRequestValidator.validate(orderRequest, bindingResult);
 

@@ -19,7 +19,7 @@ public class ConfirmationController {
     public static final String REQUEST_MAPPING = "/confirmation.html";
 
     @RequestMapping(value = REQUEST_MAPPING, method = RequestMethod.GET)
-    private String confirmation(@Valid @ModelAttribute("orderRequest") OrderRequest orderRequest, BindingResult bindingResult) {
+    public String confirmation(@Valid @ModelAttribute("orderRequest") OrderRequest orderRequest, BindingResult bindingResult) {
         String result;
         if (bindingResult.hasErrors()) {
             result = "redirect:";

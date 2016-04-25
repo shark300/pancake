@@ -31,7 +31,7 @@ public class OrderFormController {
     }
 
     @RequestMapping(value = REQUEST_MAPPING, method = RequestMethod.GET)
-    private String order() {
+    public String order() {
         return "order";
     }
 }
