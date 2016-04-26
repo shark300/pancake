@@ -16,15 +16,17 @@ import io.github.pancake.app.order.view.model.OrderRequest;
  */
 @Controller
 public class ConfirmationController {
+    private static final String REDIRECT_TO_HOMEPAGE = "redirect:";
+    private static final String REDIRECT_TO_CONFIRMATION = "confirmation";
     public static final String REQUEST_MAPPING = "/confirmation.html";
 
     @RequestMapping(value = REQUEST_MAPPING, method = RequestMethod.GET)
     public String confirmation(@Valid @ModelAttribute("orderRequest") OrderRequest orderRequest, BindingResult bindingResult) {
         String result;
         if (bindingResult.hasErrors()) {
-            result = "redirect:";
+            result = REDIRECT_TO_HOMEPAGE;
         } else {
-            result = "confirmation";
+            result = REDIRECT_TO_CONFIRMATION;
         }
         return result;
     }

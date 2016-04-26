@@ -25,6 +25,7 @@ import io.github.pancake.service.pancake.facade.PancakeFacade;
  * @author Bence_Kornis
  */
 public class OrderRequestValidatorTest {
+    private static final String EMPTY_ORDER = "EmptyOrder";
     private static final String LIMIT_EXCEEDED = "LimitExceeded";
     private static final String ORDERED_AMOUNTS = "orderedAmounts";
     @InjectMocks
@@ -33,16 +34,17 @@ public class OrderRequestValidatorTest {
     private PancakeFacade mockPancakeFacade;
     @Mock
     private Errors mockErrors;
+    private OrderRequest orderRequest;
 
     @BeforeMethod
     public void setUp() {
         initMocks(this);
+        orderRequest = new OrderRequest();
     }
 
     @Test
     public void testValidateShouldAddErrorWhenLimitExceeds() {
         // GIVEN
-        OrderRequest orderRequest = new OrderRequest();
         PancakeAmount cinnamonAmount = createPancakeAmount(Pancake.CINNAMON, 2);
         PancakeAmount cocoaAmount = createPancakeAmount(Pancake.COCOA, 1);
         orderRequest.setOrderedAmounts(Arrays.asList(cinnamonAmount, cocoaAmount));
@@ -54,9 +56,21 @@ public class OrderRequestValidatorTest {
     }
 
     @Test
-    public void testValidateShouldNotAddErrorWhenLimitDoNotExceeds() {
+    public void testValidateShouldAddErrorWhenZeroAmountOrdered() {
         // GIVEN
-        OrderRequest orderRequest = new OrderRequest();
+        PancakeAmount cinnamonAmount = createPancakeAmount(Pancake.CINNAMON, 0);
+        PancakeAmount cocoaAmount = createPancakeAmount(Pancake.COCOA, 0);
+        orderRequest.setOrderedAmounts(Arrays.asList(cinnamonAmount, cocoaAmount));
+        when(mockPancakeFacade.getOrderLimit()).thenReturn(2);
+        // WHEN
+        underTest.validate(orderRequest, mockErrors);
+        // THEN
+        verify(mockErrors).rejectValue(ORDERED_AMOUNTS, EMPTY_ORDER, "");
+    }
+
+    @Test
+    public void testValidateShouldNotAddErrorWhenLimitIsNotExceeded() {
+        // GIVEN
         PancakeAmount cinnamonAmount = createPancakeAmount(Pancake.CINNAMON, 1);
         PancakeAmount cocoaAmount = createPancakeAmount(Pancake.COCOA, 1);
         orderRequest.setOrderedAmounts(Arrays.asList(cinnamonAmount, cocoaAmount));

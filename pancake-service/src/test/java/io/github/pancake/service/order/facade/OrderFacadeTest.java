@@ -1,7 +1,5 @@
 package io.github.pancake.service.order.facade;
 
-import static org.mockito.Matchers.anyString;
-import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.MockitoAnnotations.initMocks;
 
@@ -48,19 +46,6 @@ public class OrderFacadeTest {
         underTest.saveOrder(order);
         // THEN
         verify(mockLogger).info(ORDER_MESSAGE, EMAIL, ORDERED_AMOUNTS);
-    }
-
-    @Test
-    public void testSaveOrderShouldNotLogWhenInvokedWithNoAmounts() {
-        // GIVEN
-        PancakeAmount cinnamonAmount = createPancakeAmount(Pancake.CINNAMON, 0);
-        Order order = Order.builder()
-                .withOrderedAmounts(Arrays.asList(cinnamonAmount))
-                .build();
-        // WHEN
-        underTest.saveOrder(order);
-        // THEN
-        verify(mockLogger, never()).info(anyString());
     }
 
     private PancakeAmount createPancakeAmount(Pancake type, int amount) {

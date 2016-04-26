@@ -15,6 +15,9 @@ import io.github.pancake.service.pancake.facade.PancakeFacade;
  */
 @Component
 public class OrderRequestValidator implements Validator {
+    private static final String EMPTY_ORDER_MESSAGE = "EmptyOrder";
+    private static final String LIMIT_EXCEEDED_MESSAGE = "LimitExceeded";
+    private static final String ERROR_FIELD = "orderedAmounts";
     @Autowired
     private PancakeFacade pancakeFacade;
 
@@ -32,7 +35,10 @@ public class OrderRequestValidator implements Validator {
         int orderLimit = pancakeFacade.getOrderLimit();
         int orderedAmount = countOrderedAmount((OrderRequest) target);
         if (orderedAmount > orderLimit) {
-            errors.rejectValue("orderedAmounts", "LimitExceeded", new Object[]{orderedAmount, orderLimit}, "");
+            errors.rejectValue(ERROR_FIELD, LIMIT_EXCEEDED_MESSAGE, new Object[]{orderedAmount, orderLimit}, "");
+        }
+        if (orderedAmount == 0) {
+            errors.rejectValue(ERROR_FIELD, EMPTY_ORDER_MESSAGE, "");
         }
     }
 

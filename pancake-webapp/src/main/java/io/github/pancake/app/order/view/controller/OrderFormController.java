@@ -16,6 +16,7 @@ import io.github.pancake.app.order.view.support.OrderFormModelBuilder;
  */
 @Controller
 public class OrderFormController {
+    private static final String ORDER_PAGE = "order";
     public static final String REQUEST_MAPPING = "/orderForm.html";
     @Autowired
     private OrderFormModelBuilder orderFormModelBuilder;
@@ -32,6 +33,6 @@ public class OrderFormController {
 
     @RequestMapping(value = REQUEST_MAPPING, method = RequestMethod.GET)
     public String order() {
-        return "order";
+        return ORDER_PAGE;
     }
 }

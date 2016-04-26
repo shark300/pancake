@@ -79,10 +79,8 @@ public class OrderPostControllerTest {
         // THEN
         verify(mockOrderRequestValidator, only()).validate(orderRequest, mockBindingResult);
         verify(mockRedirectAttributes, only()).addFlashAttribute(ORDER_REQUEST, orderRequest);
-
         Order order = verify(mockOrderRequestTransformer, only()).transformOrderRequest(orderRequest);
         verify(mockOrderFacade, only()).saveOrder(order);
-
         assertEquals(result, REDIRECT_TO_CONFIRMATION);
     }
 }

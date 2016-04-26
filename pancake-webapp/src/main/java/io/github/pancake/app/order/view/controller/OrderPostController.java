@@ -23,6 +23,8 @@ import io.github.pancake.service.order.facade.OrderFacade;
  */
 @Controller
 public class OrderPostController {
+    private static final String REDIRECT_TO_CONFIRMATION = "redirect:confirmation.html";
+    private static final String ORDER_PAGE = "order";
     public static final String REQUEST_MAPPING = "/orderPost.html";
     @Autowired
     private OrderFormModelBuilder orderFormModelBuilder;
@@ -48,15 +50,15 @@ public class OrderPostController {
             BindingResult bindingResult, RedirectAttributes redirectAttributes) {
         orderRequestValidator.validate(orderRequest, bindingResult);
 
-        String result;
+        String redirectUrl;
         if (bindingResult.hasErrors()) {
-            result = "order";
+            redirectUrl = ORDER_PAGE;
         } else {
             saveOrder(orderRequest);
             redirectAttributes.addFlashAttribute("orderRequest", orderRequest);
-            result = "redirect:confirmation.html";
+            redirectUrl = REDIRECT_TO_CONFIRMATION;
         }
-        return result;
+        return redirectUrl;
     }
 
     private void saveOrder(OrderRequest orderRequest) {

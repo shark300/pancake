@@ -1,7 +1,8 @@
 package io.github.pancake.service.pancake.facade;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -42,11 +43,7 @@ public class PancakeFacade {
      * @return {@link List} of available amounts
      */
     public List<Integer> getAvailableAmounts() {
-        List<Integer> availableAmounts = new ArrayList<>();
-        for (int i = 0; i <= orderLimit; i++) {
-            availableAmounts.add(i);
-        }
-        return availableAmounts;
+        return IntStream.rangeClosed(0, orderLimit).boxed().collect(Collectors.toList());
     }
 
     /**
