@@ -1,63 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-    <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>io.github.pancake</groupId>
-        <artifactId>multi-pancake-app</artifactId>
-        <version>1.0</version>
-    </parent>
-    <artifactId>pancake-service</artifactId>
-    <packaging>jar</packaging>
-    <name>Pancake Service</name>
+	<modelVersion>4.0.0</modelVersion>
+	<packaging>jar</packaging>
+	<parent>
+		<groupId>io.github.pancake</groupId>
+		<artifactId>pancake</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>pancake-service</artifactId>
 
-    <dependencies>
-        <!-- Logging -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jcl-over-slf4j</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-        </dependency>
-        <!-- Spring -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-beans</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-expression</artifactId>
-        </dependency>
-        <!-- Modules -->
-        <dependency>
-            <groupId>com.github.gergelyrozsonits.iogithubpancakepersistence</groupId>
-            <artifactId>io-github-pancake-persistence-api</artifactId>
-        </dependency>
-        <!-- Testing -->
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+	<properties>
+		<!-- Checkstyle -->
+		<path>${project.parent.basedir}</path>
+		<checkstyle.basedir>${project.parent.basedir}/build/rules</checkstyle.basedir>
+		<pmd.config.location>${project.parent.basedir}/build/rules/pmd_rules.xml</pmd.config.location>
+	</properties>
 
-    <build>
-        <finalName>pancake-service</finalName>
-    </build>
+	<dependencies>
+		<!-- Spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+		<!-- Guava -->
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+		</dependency>
+		<!-- Modules -->
+		<dependency>
+			<groupId>com.github.gergelyrozsonits.iogithubpancakepersistence</groupId>
+			<artifactId>io-github-pancake-persistence-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.gergelyrozsonits.iogithubpancakepersistence</groupId>
+			<artifactId>io-github-pancake-persistence-impl</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<!-- Logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+		</dependency>
+		<!-- Testing -->
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<reporting>
+		<plugins>
+			<!-- Checkstyle -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+			</plugin>
+			<!-- Cross references -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</reporting>
 
 </project>
