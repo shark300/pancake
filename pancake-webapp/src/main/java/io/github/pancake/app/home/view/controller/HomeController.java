@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class HomeController {
     private static final String HOMEPAGE = "homepage";
-    public static final String REQUEST_MAPPING = "/";
+    private static final String REQUEST_MAPPING = "/";
 
     @RequestMapping(REQUEST_MAPPING)
     public String homepage() {

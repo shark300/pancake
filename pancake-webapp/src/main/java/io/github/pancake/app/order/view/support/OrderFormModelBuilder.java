@@ -10,9 +10,8 @@ import io.github.pancake.persistence.base.Pancake;
 import io.github.pancake.service.pancake.facade.PancakeFacade;
 
 /**
- * Builder for {@link OrderFormModel} class which provides
- * {@link org.springframework.web.bind.annotation.ModelAttribute} for
- * {@link io.github.pancake.app.order.view.controller.OrderFormController} and
+ * Builder for {@link OrderFormModel} class.
+ * Provides {@link io.github.pancake.app.order.view.controller.OrderFormController} and
  * {@link io.github.pancake.app.order.view.controller.OrderPostController}.
  * @author Bence_Kornis
  */
@@ -22,8 +21,8 @@ public class OrderFormModelBuilder {
     private PancakeFacade pancakeFacade;
 
     /**
-     * Initialize {@link OrderFormModel} which contains available
-     * amounts of ordering and available pancake types
+     * Initialize {@link OrderFormModel}.
+     * Contains available amounts of ordering and available pancake types
      * @return the {@link OrderFormModel}
      */
     public OrderFormModel getOrderFormModel() {

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suppressions PUBLIC "-//Puppy Crawl//DTD Suppressions 1.1//EN" "http://www.puppycrawl.com/dtds/suppressions_1_1.dtd">
+<suppressions>
+  <!-- relax rules in unit tests, we need less docs and magic numbers are commonplace in tests -->
+  <suppress checks="JavadocMethod|IllegalInstantiation|IllegalThrows|MagicNumber" files=".*Mock.*java|.*Test\.java|.*IT\.java" />
+  <suppress id="ClassDataAbstractionCouplingCode_Error" files=".*Mock.*java|.*Test\.java|.*IT\.java" />
+  <suppress id="ClassFanOutComplexityCode_Error" files=".*Mock.*java|.*Test\.java|.*IT\.java" />
+  <suppress id="MethodLengthCode_Error" files=".*Mock.*java|.*Test\.java|.*IT\.java" />
+  <suppress id="ParameterNumberCode_Error" files=".*Mock.*java|.*Test\.java|.*IT\.java" />
+  <suppress id="CyclomaticComplexityCode_Error" files=".*Mock.*java|.*Test\.java|.*IT\.java" />
+  <suppress id="ParameterNumberCode_Error" files=".*Mock.*java|.*Test\.java|.*IT\.java" />
+  <suppress id="ClassFanOutComplexityCode_Error" files=".*Mock.*java|.*Test\.java|.*IT\.java" />
+  <suppress id="NPathComplexityCode_Error" files=".*Mock.*java|.*Test\.java|.*IT\.java" />
+  <suppress id="AnonInnerLengthCode_Error" files=".*Mock.*java|.*Test\.java|.*IT\.java" />
+  <suppress id="MethodCountTotalCode_Error" files=".*Mock.*java|.*Test\.java|.*IT\.java" />
+  <!-- relax rules in package info files, they are not real classes -->
+  <suppress checks="RegexpHeader" files=".*package-info.java"/>
+  <!-- relax rules for project specific classes -->
+  <!-- Remove after transitioning to Jersey 2.17 with Jackson2: MOB-9264 -->
+  <suppress checks="RegexpHeader" files="JacksonFeature.java"/>
+  <!-- relax rules for aop advices -->
+  <suppress checks="IllegalThrows" files=".*Aspect.java" />
+  <!-- relax rules for aop advice test -->
+  <suppress checks="EmptyBlock" files=".*AspectTest.java"/>
+  <!-- relax rules for .class, .properties, .xml, .htm -->
+  <suppress checks="." files=".*\.class|.*\.properties|.*\.xml|.*\.feature|.*\.json|.*\.yml|.*\.conf|.*\.htm"/>
+  <suppress checks="." files="[\\/]target[\\/]java-gen[\\/]"/>
+  <suppress checks="." files="AbstractForm.java"/>
+    <!-- relax rules for spring java configuration classes  -->
+  <suppress checks="HideUtilityClassConstructor" files=".*Config.*java"/>
+
+  <!-- Added in MOB-10321, because hotel domain object has to contain hotel details -->
+  <suppress checks="FileLength" files="com.hotels.mobile.shortlist.facade.domain.Hotel" />
+
+  <!-- Added in MOB-10321, because facade has to call multiple services and converters to get shortlist -->
+  <suppress checks="ParameterNumber" files="com.hotels.mobile.shortlist.facade.GetShortListFacade" />
+</suppressions>

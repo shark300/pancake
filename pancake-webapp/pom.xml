@@ -11,6 +11,13 @@
 	</parent>
 	<artifactId>pancake-webapp</artifactId>
 
+	<properties>
+		<!-- Checkstyle -->
+		<path>${project.parent.basedir}</path>
+		<checkstyle.basedir>${project.parent.basedir}/build/rules</checkstyle.basedir>
+		<pmd.config.location>${project.parent.basedir}/build/rules/pmd_rules.xml</pmd.config.location>
+	</properties>
+
 	<dependencies>
 		<!-- Servlet API -->
 		<dependency>
@@ -66,5 +73,20 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	
+	<reporting>
+		<plugins>
+			<!-- Checkstyle -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+			</plugin>
+			<!-- Cross references -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</reporting>
 
 </project>

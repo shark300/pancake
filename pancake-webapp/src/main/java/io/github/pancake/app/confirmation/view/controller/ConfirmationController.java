@@ -18,7 +18,7 @@ import io.github.pancake.app.order.view.model.OrderRequest;
 public class ConfirmationController {
     private static final String REDIRECT_TO_HOMEPAGE = "redirect:";
     private static final String REDIRECT_TO_CONFIRMATION = "confirmation";
-    public static final String REQUEST_MAPPING = "/confirmation.html";
+    private static final String REQUEST_MAPPING = "/confirmation.html";
 
     @RequestMapping(value = REQUEST_MAPPING, method = RequestMethod.GET)
     public String confirmation(@Valid @ModelAttribute("orderRequest") OrderRequest orderRequest, BindingResult bindingResult) {

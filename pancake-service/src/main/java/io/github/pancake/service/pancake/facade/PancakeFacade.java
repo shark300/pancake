@@ -31,7 +31,7 @@ public class PancakeFacade {
     }
 
     /**
-     * Facade method to get {@link List} of available pancakes
+     * Facade method to get {@link List} of available pancakes.
      * @return {@link List} of available pancakes
      */
     public List<Pancake> getOrderablePancakes() {
@@ -39,7 +39,7 @@ public class PancakeFacade {
     }
 
     /**
-     * Facade method to get {@link List} of available amounts
+     * Facade method to get {@link List} of available amounts.
      * @return {@link List} of available amounts
      */
     public List<Integer> getAvailableAmounts() {
@@ -47,7 +47,7 @@ public class PancakeFacade {
     }
 
     /**
-     * Facade method to get the order limit
+     * Facade method to get the order limit.
      * @return the order limit
      */
     public int getOrderLimit() {

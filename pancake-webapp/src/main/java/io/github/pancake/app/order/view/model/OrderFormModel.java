@@ -10,7 +10,7 @@ import io.github.pancake.persistence.base.Pancake;
  * {@link io.github.pancake.app.order.view.controller.OrderPostController}.
  * @author Bence_Kornis
  */
-public class OrderFormModel {
+public final class OrderFormModel {
     private List<Integer> availableAmounts;
     private List<Pancake> availablePancakes;
 
@@ -31,7 +31,7 @@ public class OrderFormModel {
         return new Builder();
     }
 
-    public static class Builder {
+    public static final class Builder {
         private List<Integer> availableAmounts;
         private List<Pancake> availablePancakes;
 

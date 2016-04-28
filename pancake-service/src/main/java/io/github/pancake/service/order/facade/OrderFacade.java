@@ -22,7 +22,7 @@ public class OrderFacade {
     private Logger logger = LoggerFactory.getLogger(OrderFacade.class);
 
     /**
-     * Saves {@link Order}
+     * Saves {@link Order}.
      * @param order the {@link Order} to save
      */
     public void saveOrder(Order order) {

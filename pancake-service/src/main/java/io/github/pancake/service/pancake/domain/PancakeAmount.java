@@ -6,7 +6,7 @@ import io.github.pancake.persistence.base.Pancake;
  * Contains pancake type and ordered amount.
  * @author Bence_Kornis
  */
-public class PancakeAmount {
+public final class PancakeAmount {
     private Pancake type;
     private int amount;
 
@@ -27,7 +27,7 @@ public class PancakeAmount {
         return new Builder();
     }
 
-    public static class Builder {
+    public static final class Builder {
         private Pancake type;
         private int amount;
 

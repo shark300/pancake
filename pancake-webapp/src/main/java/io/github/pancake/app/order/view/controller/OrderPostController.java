@@ -25,7 +25,7 @@ import io.github.pancake.service.order.facade.OrderFacade;
 public class OrderPostController {
     private static final String REDIRECT_TO_CONFIRMATION = "redirect:confirmation.html";
     private static final String ORDER_PAGE = "order";
-    public static final String REQUEST_MAPPING = "/orderPost.html";
+    private static final String REQUEST_MAPPING = "/orderPost.html";
     @Autowired
     private OrderFormModelBuilder orderFormModelBuilder;
     @Autowired

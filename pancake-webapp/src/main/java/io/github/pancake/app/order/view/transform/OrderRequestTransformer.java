@@ -20,7 +20,7 @@ public class OrderRequestTransformer {
     private PancakeAmountTransformer pancakeAmountTransformer;
 
     /**
-     * The transform method
+     * The transform method.
      * @param orderRequest the {@link OrderRequest} to be transformed
      * @return the {@link Order}
      */

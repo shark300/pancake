@@ -8,7 +8,7 @@ import io.github.pancake.service.pancake.domain.PancakeAmount;
  * Contains user email and ordered pancake amounts.
  * @author Bence_Kornis
  */
-public class Order {
+public final class Order {
     private List<PancakeAmount> orderedAmounts;
     private String email;
 
@@ -29,7 +29,7 @@ public class Order {
         return new Builder();
     }
 
-    public static class Builder {
+    public static final class Builder {
         private List<PancakeAmount> orderedAmounts;
         private String email;
 
